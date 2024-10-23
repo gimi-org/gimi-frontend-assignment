@@ -1,50 +1,56 @@
-# Welcome to your Expo app 👋
+# Welcome to Gimi Frontend Assignment! 🚀 
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+This is the frontend assignment for Gimi. The goal is to create a simple app that displays a list of users and their details. See the instructions and design specification below.
+
+## Prerequisites - Install Node.js and npm
+
+Make sure that you have Node.js and npm installed on your machine. You can check if you have Node.js and npm installed by running the following command:
+
+```bash
+node -v
+npm -v
+```
+
+You should see the version numbers of Node.js and npm if they are installed. If you don't have Node.js and npm installed, you can download and install Node.js from the following link (it will also install npm):
+
+- [Node.js](https://nodejs.org/en/download/)
 
 ## Get started
 
-1. Install dependencies
+1. Clone this repository
+
+2. Install dependencies
 
    ```bash
    npm install
    ```
 
-2. Start the app
+3. Start the metro bundler
 
    ```bash
-    npx expo start
+    npm start
    ```
+   
+4. Run the app on your device or emulator. Either scan the QR code with the Expo Go app on your phone, or run the app on an emulator by pressing `a` for Android or `i` for iOS in the terminal.
 
-In the output, you'll find options to open the app in a
+## Instructions
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+You will start with a basic app containing one screen that displays a list of users. Your task is to implement the following features:
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+1. **Update the user list**: The user list should be updated according to the design specification.
 
-## Get a fresh project
+2. **User details screen**: When a user in the list is pressed, the app should navigate to a new screen that displays the user's details, according to the design specification.
 
-When you're ready, run:
+## Design Specification
 
-```bash
-npm run reset-project
+The design specification for the assignment can be found here: [Design Specification](https://www.figma.com/design/l3YWEhOjgl1qdDnYoUeqa9/Frontend-assignment-2024?node-id=8-97&m=dev&t=bB0hZCy3dDhJ8f5E-1)
+
+## Tips & Tricks
+
+### Icons 
+
+To render an icon you can use the `SimpleLineIcons` component from `@expo/vector-icons`. Example:
+
+```tsx
+<SimpleLineIcons name="star" size={12} color="green" />
 ```
-
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
-
-## Learn more
-
-To learn more about developing your project with Expo, look at the following resources:
-
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
-
-## Join the community
-
-Join our community of developers creating universal apps.
-
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
