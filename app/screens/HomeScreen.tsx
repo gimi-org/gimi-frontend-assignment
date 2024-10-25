@@ -1,22 +1,42 @@
-import { StyleSheet, Text, View } from "react-native";
+import {
+  FlatList,
+  ListRenderItem,
+  Pressable,
+  StyleSheet,
+  Text,
+  View,
+} from "react-native";
 import { useGetRandomUsersQuery } from "@/app/api/randomUserApi";
-import { SimpleLineIcons } from "@expo/vector-icons";
+import { User } from "@/app/types/User";
+import { NativeStackScreenProps } from "@react-navigation/native-stack";
+import { RootStackParamList } from "@/app";
 
-export function HomeScreen() {
+type Props = NativeStackScreenProps<RootStackParamList, "Home">;
+
+export function HomeScreen({ navigation }: Props) {
   const { data } = useGetRandomUsersQuery();
+
+  const handlePress = (userId: string) => () => {
+    navigation.navigate("UserDetails", { userId });
+  };
+
+  const renderItem: ListRenderItem<User> = ({ item: user }) => (
+    <Pressable onPress={handlePress(user.id.value)} style={styles.row}>
+      <Text>
+        {user.name.first} {user.name.last}
+      </Text>
+    </Pressable>
+  );
 
   return (
     <View style={styles.container}>
-      {data
-        ? data.results.map((user, index) => (
-            <View key={index} style={styles.row}>
-              <SimpleLineIcons name="star" size={12} color="green" />
-              <Text>
-                {user.name.first} {user.name.last}
-              </Text>
-            </View>
-          ))
-        : null}
+      <Text style={styles.header}>Your contacts</Text>
+      <FlatList
+        data={data?.results}
+        renderItem={renderItem}
+        style={styles.list}
+        keyExtractor={(item) => item.id.value}
+      />
     </View>
   );
 }
@@ -24,12 +44,21 @@ export function HomeScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: "center",
     justifyContent: "center",
+  },
+  header: {
+    marginTop: 72,
+    marginBottom: 40,
+    marginLeft: 32,
+    fontSize: 32,
+    fontWeight: "700",
+  },
+  list: {
+    marginHorizontal: 16,
   },
   row: {
     flexDirection: "row",
     alignItems: "center",
-    gap: 5,
+    marginBottom: 10,
   },
 });
